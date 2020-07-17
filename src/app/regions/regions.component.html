@@ -1,0 +1,47 @@
+
+<form name="form" novalidate id="ContactForm">
+    <div class="row">
+      <div class="width"> 
+        <div class="form-group">
+            <select  class="form-control" placeholder="Specialized Service*" (change)="FetchTeamList($event.target.value)" id="environment_url" name="Specialized" required> 
+            <option [ngValue]="undefined">---Select Region---</option>
+                <option *ngFor="let item of regions" [value]="item.value">
+                    {{item.contenent}}
+                </option>s
+            </select>
+          </div>
+      </div>
+      <div class="width pad">
+        <div class="form-group">
+            <select  class="form-control" placeholder="Specialized Service*" (change)="FetchCountryList($event.target.value)"  name="Specialized" id="ddlPassport" required> 
+            <option [ngValue]="undefined">---Select Country---</option>
+                <option  *ngFor="let item of CountryList" [value]="item.name" >
+                    <p >{{item.name}}</p> 
+                </option>
+            </select>
+          </div>
+      </div>
+      <!-- <div class="col-md-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div> -->
+    </div>
+  </form>
+<div class="pad">
+  <table style="width:100%" >
+    <tr class="pad">
+      <th>Name</th>
+      <th>Capital</th> 
+      <th>Population</th>
+      <th>Currencies</th> 
+      <th>Flag</th>
+    </tr>
+    <tr *ngFor="let item of CountryList;">
+      <td>{{item.name}}</td>
+      <td>{{item.capital}}</td>
+      <td >{{item.population}}</td>
+      <td><p *ngFor="let currency of item.currencies">{{currency.name}}</p></td>
+      <td><img [src]="item.flag" height="30" width="70" style="margin-right:10px;"> </td>
+    </tr>  
+  </table>
+</div> 
+  
